@@ -38,8 +38,12 @@ else
   channel=stable
 fi
 
-# Detect chrome version or default to current
-CHROME_VERSION="${CHROME_VERSION:-current}"
+# Detect requested Chrome version or default to current
+if [ -f $ENV_DIR/CHROME_VERSION ]; then
+  channel=$(cat $ENV_DIR/CHROME_VERSION)
+else
+  channel=current
+fi
 
 # Setup bin and shim locations for desired channel, and detect invalid channels
 case "$channel" in
