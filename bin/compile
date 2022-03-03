@@ -147,7 +147,7 @@ mkdir -p $BUILD_DIR/.apt
 
 for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   if ! [[ $version == "current"  ]] && [[ $(basename $DEB) == "google-chrome-stable_current_amd64.deb"  ]]; then
-    topic "Skipping install of Google Chrome current version."
+    topic "Skipping install of Google Chrome current version because only version $version should be installed."
   else
     topic "Installing $(basename $DEB)"
     dpkg -x $DEB $BUILD_DIR/.apt/
