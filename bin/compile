@@ -40,9 +40,9 @@ fi
 
 # Detect requested Chrome version or default to current
 if [ -f $ENV_DIR/CHROME_VERSION ]; then
-  channel=$(cat $ENV_DIR/CHROME_VERSION)
+  version=$(cat $ENV_DIR/CHROME_VERSION)
 else
-  channel=current
+  version=current
 fi
 
 # Setup bin and shim locations for desired channel, and detect invalid channels
@@ -109,12 +109,12 @@ if [ ! -f $CACHE_DIR/PURGED_CACHE_V1 ]; then
   touch $CACHE_DIR/PURGED_CACHE_V1
 fi
 
-topic "Installing Google Chrome ($CHROME_VERSION) from the $channel channel."
+topic "Installing Google Chrome ($version) from the $channel channel."
 
 if [[ $CHROME_VERSION == "current"  ]]; then
   PACKAGES="$PACKAGES https://dl.google.com/linux/direct/google-chrome-${channel}_current_amd64.deb"
 else
-  PACKAGES="$PACKAGES https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-${channel}_${CHROME_VERSION}_amd64.deb"
+  PACKAGES="$PACKAGES https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-${channel}_${version}_amd64.deb"
 fi
 
 
